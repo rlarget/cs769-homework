@@ -42,6 +42,8 @@ class BertSelfAttention(nn.Module):
     # before normalizing the scores, use the attention mask to mask out the padding token scores
     # Note again: in the attention_mask non-padding tokens with 0 and padding tokens with a large negative number 
 
+    query@(key.T) + attention_mask
+
     # normalize the scores
 
     # multiply the attention scores to the value and get back V' 
