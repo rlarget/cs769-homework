@@ -91,9 +91,10 @@ class BertLayer(nn.Module):
     ln_layer: layer norm that takes input+sublayer(output) 
     This function computes ``LayerNorm(input + Sublayer(output))``, where sublayer is a dense_layer followed by dropout.
     """
-    # todo
-    raise NotImplementedError
+    sublayer = nn.Sequential(dense_layer,dropout)
+    return ln_layer(input+sublayer(output))
 
+    
   def forward(self, hidden_states, attention_mask):
     """
     hidden_states: either from the embedding layer (first bert layer) or from the previous bert layer
